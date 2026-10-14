@@ -1,0 +1,15 @@
+{
+  "test_acc": 0.9517999887466431,
+  "per_class_acc": {
+    "airplane": 0.961,
+    "automobile": 0.982,
+    "bird": 0.932,
+    "cat": 0.893,
+    "deer": 0.963,
+    "dog": 0.912,
+    "frog": 0.976,
+    "horse": 0.967,
+    "ship": 0.969,
+    "truck": 0.963
+  }
+}

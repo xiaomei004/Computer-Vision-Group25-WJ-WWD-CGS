@@ -1,0 +1,14 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# 数据与模型权重（体积大，可通过脚本重新生成）
+data/
+*.pth
+
+# IDE
+.idea/
+.vscode/
