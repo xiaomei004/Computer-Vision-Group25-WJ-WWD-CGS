@@ -1,0 +1,16 @@
+ 答辩演示推荐流程（约 1 分钟，全都能现场跑）
+
+  ① 实时预测演示（最有冲击力，先演这个）
+  python src/demo.py --model resnet18 --weights results/resnet18/best.pth --n 6
+
+  python src/demo.py --model simple   --weights results/simple/best.pth     --n 6
+  → 现场加载模型，对 6 张测试图逐张预测，打印置信度（比如 cat(100%)），并生成一张"预测 vs
+  真实"对比图。开场几十秒就能让老师看到"模型真的会看图"。
+
+  ② 评估出准确率（补数据）
+  python src/evaluate.py --model resnet18 --weights results/resnet18/best.pth
+  → 打印 测试集准确率 = 0.9518 + 10 个类别各自准确率 + 混淆矩阵图。
+
+  ③ 自定义图片（加分项，可选）
+  python src/demo.py --model resnet18 --weights results/resnet18/best.pth --image automobile.jpg
+  → 喂一张自己的图，输出 Top-5 概率条形图。

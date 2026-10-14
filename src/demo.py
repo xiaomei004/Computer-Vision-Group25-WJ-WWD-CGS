@@ -127,14 +127,21 @@ def predict_test_samples(model, name, tf, device, n):
 
 def main():
     args = parse_args()
+    # 相对路径统一从项目根目录解析，避免在 src/ 下运行时报 FileNotFoundError
+    weights = Path(args.weights)
+    if not weights.is_absolute():
+        weights = ROOT / weights
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model = build_model(args.model).to(device)
-    model.load_state_dict(torch.load(args.weights, map_location=device, weights_only=True))
+    model.load_state_dict(torch.load(weights, map_location=device, weights_only=True))
     tf = make_transform(args.model)
     print(f"[demo] 模型 {args.model} 已加载，设备 {device}\n")
 
     if args.image:
-        predict_custom_image(model, tf, args.image, device)
+        image = Path(args.image)
+        if not image.is_absolute():
+            image = ROOT / image
+        predict_custom_image(model, tf, image, device)
     else:
         predict_test_samples(model, args.model, tf, device, args.n)
 
