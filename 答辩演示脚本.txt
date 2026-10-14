@@ -12,5 +12,10 @@
   → 打印 测试集准确率 = 0.9518 + 10 个类别各自准确率 + 混淆矩阵图。
 
   ③ 自定义图片（加分项，可选）
-  python src/demo.py --model resnet18 --weights results/resnet18/best.pth --image automobile.jpg
+  python src/demo.py --model resnet18 --weights results/resnet18/best.pth --image 演示图片/automobile.jpg
   → 喂一张自己的图，输出 Top-5 概率条形图。
+
+  ④ 失败案例演示（主动讲模型局限，很加分）
+  python src/demo.py --model resnet18 --weights results/resnet18/best.pth --image 演示图片/dog1.jpg
+  → 这只博美犬会被高置信度（约 97.9%）错判成 cat。正好引出"低分辨率+纹理偏置+过度自信"的分析，
+  完整讲稿见 学习笔记.md 第 9 节。
